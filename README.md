@@ -6,5 +6,10 @@ A graphical tool for calculating electrical loads on a circuit.
 2. Install grunt and bower: ``npm install -g grunt-cli bower``
 3. Install the application from the root of this repository: ``npm install``
 
-# Usage
-1. ``npm serve``
+# Development
+1. Run ``npm serve`` to start a local server.
+
+# Deployment
+1. Get push permissions to this repository.
+2. Run: ``grunt build`` to create ``dist`` directory.
+2. Run: ``grunt buildconfig:pages`` which will commit your current 'dist' directory contents to live.

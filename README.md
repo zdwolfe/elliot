@@ -11,5 +11,4 @@ A graphical tool for calculating electrical loads on a circuit.
 
 # Deployment
 1. Get push permissions to this repository.
-2. Run: ``grunt build`` to create ``dist`` directory.
-2. Run: ``grunt buildconfig:pages`` which will commit your current 'dist' directory contents to live.
+2. Run: ``grunt deploy`` which will run test, build the 'dist' directory, and push the 'dist' directory to gh-pages.

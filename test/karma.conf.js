@@ -40,6 +40,7 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [
+      'bower_components/cytoscape/dist/cytoscape.js',
     ],
 
     // web server port

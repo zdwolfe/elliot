@@ -55,7 +55,7 @@ angular.module('elliotApp')
         });
       }
 
-      for (var edge = 0; edge < MAX_ELEMENTS * 7; edge++) {
+      for (var edge = 0; edge < MAX_ELEMENTS * 6; edge++) {
         elements.push({
           data: {
             id: edge,

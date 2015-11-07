@@ -3,11 +3,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-// @TODO move this to use some bootstrappy elements instead of hard size.
+html, body, #view, #container, #main-row, #control-column, #graph-column {
+  height: 100%;
+}
+
 #graph {
   height: 100%;
   width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
 }

@@ -1,9 +1,29 @@
 <div id="main-row" class="row">
   <div id="graph-column" class="col-md-8 bg-success">
+    <!-- @TODO make this a controller -->
     Hi, I'm a graph!
     <div id="graph"></div>
   </div>
   <div id="control-column" class="col-md-4 bg-info">
-    Hi, I'm a control panel!
+    <!-- @TODO make this a controller -->
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Control Panel</h3>
+        <p>Click on nodes or edges to display data below:</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <pre>
+        {
+          id: {{ activeElement.id() }},
+          isNode: {{ activeElement.isNode() }},
+          data: {{ activeElement.data() }}
+        }
+        </pre>
+
+      </div>
+    </div>
   </div>
 </div>

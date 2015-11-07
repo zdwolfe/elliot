@@ -8,7 +8,7 @@
  * Controller of the elliotApp
  */
 angular.module('elliotApp')
-  .controller('MainCtrl', ['CytoscapeService', function (cytoscape) {
+  .controller('MainCtrl', ['CytoscapeService', '$scope', function (cytoscape, $scope) {
     var MAX_ELEMENTS = 10;
 
     // An array of maps of type {selector: String, style {}}
@@ -76,10 +76,18 @@ angular.module('elliotApp')
       return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    cytoscape({
+    var graph = cytoscape({
       container: document.getElementById('graph'),
       elements: getElements(),
       layout: getLayout(),
       style: getStyle()
+    });
+
+    // @TODO This is ugly - is there a better way to do this in Angular?
+    graph.on('click', function(e) {
+      var node = e.cyTarget;
+      $scope.$apply(function() {
+        $scope.activeElement = node;
+      });
     });
   }]);

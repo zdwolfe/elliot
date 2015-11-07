@@ -12,7 +12,12 @@ describe('Controller: MainCtrl', function () {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      'CytoscapeService': function() {}
+      'CytoscapeService': function() {
+        return {
+          on: function() {
+          }
+        };
+      }
     });
   }));
 

@@ -9,6 +9,7 @@
  */
 angular.module('elliotApp')
   .controller('MainCtrl', ['CytoscapeService', function (cytoscape) {
+    var MAX_ELEMENTS = 10;
 
     // An array of maps of type {selector: String, style {}}
     function getStyle() {
@@ -43,20 +44,38 @@ angular.module('elliotApp')
       };
     }
 
-    var elements = [];
-    for (var element = 1; element <= 10; element++) {
-      elements.push({
-        group: 'nodes',
-        data: {
-          id: element,
-        }
-      });
+    function getElements() {
+      var elements = [];
+      for (var element = 0; element < MAX_ELEMENTS; element++) {
+        elements.push({
+          group: 'nodes',
+          data: {
+            id: element,
+          }
+        });
+      }
+
+      for (var edge = 0; edge < MAX_ELEMENTS * 7; edge++) {
+        elements.push({
+          data: {
+            id: edge,
+            source: getRandomInt(0, 10),
+            target: getRandomInt(0, 10)
+          }
+        });
+      }
+      return elements;
+    }
+
+    // min (included) max (excluded)
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
     }
 
     cytoscape({
       container: document.getElementById('graph'),
-      elements: elements,
-      style: getStyle(),
-      layout: getLayout()
+      elements: getElements(),
+      layout: getLayout(),
+      style: getStyle()
     });
   }]);

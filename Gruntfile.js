@@ -502,6 +502,9 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'newer:jshint',
+    'newer:jscs',
+    'test',
     'clean:dist',
     'wiredep',
     'useminPrepare',
@@ -520,14 +523,11 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
-    'newer:jscs',
-    'test',
     'build'
   ]);
 
   grunt.registerTask('deploy', [
-    'test',
+    'build',
     'buildcontrol:pages'
   ]);
 };

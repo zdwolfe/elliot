@@ -143,6 +143,8 @@ angular.module('elliotApp')
       var node = e.cyTarget;
       $scope.$apply(function() {
         var activeElementData = node.data();
+        activeElementData.isNode = node.isNode();
+        activeElementData.isEdge = !node.isNode();
         $scope.activeElementData = JSON.stringify(activeElementData, null, '  ');
         $scope.activeElement = node;
       });

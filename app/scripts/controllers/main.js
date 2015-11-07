@@ -114,7 +114,7 @@ angular.module('elliotApp')
         });
       }
 
-      for (var edge = 0; edge < MAX_ELEMENTS * 6; edge++) {
+      for (var edge = 0; edge < MAX_ELEMENTS * 3; edge++) {
         elements.push({
           data: {
             id: edge,

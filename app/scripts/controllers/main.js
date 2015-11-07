@@ -87,6 +87,18 @@ angular.module('elliotApp')
       return voltageSystems[getRandomInt(0,4)];
     }
 
+    function getRandomBusRating() {
+      return getRandomInt(1,7) + '00A';
+    }
+
+    function getRandomMainCb() {
+      return getRandomInt(1,7) + '00A';
+    }
+
+    function getRandomPoles() {
+      return getRandomInt(30,99);
+    }
+
     function getElements() {
       var elements = [];
       for (var element = 0; element < MAX_ELEMENTS; element++) {
@@ -94,7 +106,10 @@ angular.module('elliotApp')
           group: 'nodes',
           data: {
             id: getPanelId(element),
-            voltageSystem: getRandomVoltageSystem()
+            voltageSystem: getRandomVoltageSystem(),
+            busRating: getRandomBusRating(),
+            mainCb: getRandomMainCb(),
+            poles: getRandomPoles()
           }
         });
       }
@@ -127,6 +142,8 @@ angular.module('elliotApp')
     graph.on('click', function(e) {
       var node = e.cyTarget;
       $scope.$apply(function() {
+        var activeElementData = node.data();
+        $scope.activeElementData = JSON.stringify(activeElementData, null, '  ');
         $scope.activeElement = node;
       });
     });

@@ -11,6 +11,41 @@ angular.module('elliotApp')
   .controller('MainCtrl', ['CytoscapeService', '$scope', function (cytoscape, $scope) {
     var MAX_ELEMENTS = 10;
 
+    var voltageSystems = [
+        {
+          lineToLine: 480,
+          lineToNeutral: 277,
+          phase: 3,
+          wires: 4,
+          polesFromSupply: 3,
+          neutral: true
+        },
+        {
+          lineToLine: 208,
+          lineToNeutral: 120,
+          phase: 3,
+          wires: 4,
+          polesFromSupply: 3,
+          neutral: true
+        },
+        {
+          lineToLine: 480,
+          lineToNeutral: 277,
+          phase: 3,
+          wires: 3,
+          polesFromSupply: 3,
+          neutral: false
+        },
+        {
+          lineToLine: 208,
+          lineToNeutral: 120,
+          phase: 1,
+          wires: 3,
+          polesFromSupply: 2,
+          neutral: true
+        }
+    ];
+
     // An array of maps of type {selector: String, style {}}
     function getStyle() {
       return [
@@ -48,6 +83,10 @@ angular.module('elliotApp')
       return 'panel-' + elementNumber;
     }
 
+    function getRandomVoltageSystem() {
+      return voltageSystems[getRandomInt(0,4)];
+    }
+
     function getElements() {
       var elements = [];
       for (var element = 0; element < MAX_ELEMENTS; element++) {
@@ -55,6 +94,7 @@ angular.module('elliotApp')
           group: 'nodes',
           data: {
             id: getPanelId(element),
+            voltageSystem: getRandomVoltageSystem()
           }
         });
       }

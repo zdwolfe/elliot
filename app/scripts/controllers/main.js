@@ -44,13 +44,17 @@ angular.module('elliotApp')
       };
     }
 
+    function getPanelId(elementNumber) {
+      return 'panel-' + elementNumber;
+    }
+
     function getElements() {
       var elements = [];
       for (var element = 0; element < MAX_ELEMENTS; element++) {
         elements.push({
           group: 'nodes',
           data: {
-            id: element,
+            id: getPanelId(element),
           }
         });
       }
@@ -59,8 +63,8 @@ angular.module('elliotApp')
         elements.push({
           data: {
             id: edge,
-            source: getRandomInt(0, 10),
-            target: getRandomInt(0, 10)
+            source: getPanelId(getRandomInt(0, 10)),
+            target: getPanelId(getRandomInt(0, 10))
           }
         });
       }
